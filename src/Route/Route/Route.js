@@ -6,11 +6,12 @@ import Login from "../../pages/Login/Login";
 import MyTask from "../../pages/Mytask/MyTask";
 import NotFound from "../../pages/NotFound/NotFound";
 import Signup from "../../pages/Signup/Signup";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
      {
           path:'/',
-          element: <Main></Main>,
+          element: <PrivateRoute><Main></Main></PrivateRoute>,
           children:[
                {
                     path:'/',

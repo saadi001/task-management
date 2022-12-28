@@ -4,7 +4,7 @@ import './Main.css';
 import addTaskIcon from '../Asset/icon/icons8-add-properties-48.png'
 import taskPlanning from '../Asset/icon/icons8-task-planning-48.png'
 import taskCompleted from '../Asset/icon/icons8-task-completed-48.png'
-import logOutIcon from '../Asset/icon/logout.png';
+import logOutIcon from '../Asset/icon/logout2.png';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
 
 const Main = () => {
@@ -36,10 +36,10 @@ const Main = () => {
                               <ul className="menu p-4 w-60 ">
                                    {/* <!-- Sidebar content here --> */}                                   
                                    <div className='text-center pt-4 relative'>
-                                        <div className='border w-14 h-14 inline-block rounded-full'><img src="" alt="user" /></div>
+                                        <div className='border-2 border-rose-500 w-14 h-14 inline-block rounded-full'><img className='w-full rounded-full' src={user?.photoURL} alt="user" /></div>
                                         <p className='mt-3 mb-5 text-sm'>{user?.email}</p>
                                         {
-                                             user && <div title='sign out' onClick={userLogOut} className='absolute right-1 top-1  p-1 rounded-full hover:bg-slate-300 cursor-pointer'><img className='w-5' src={logOutIcon} alt="" /></div>
+                                             user && <div title='sign out' onClick={userLogOut} className='absolute right-1 top-1  p-1 rounded-full hover:bg-slate-200 cursor-pointer'><img className='w-5' src={logOutIcon} alt="" /></div>
                                         }
                                    </div>
                                    <li className='font-semibold'><Link to='/addTask'><img className='w-8' src={addTaskIcon} alt="" /> Add Task</Link></li>
