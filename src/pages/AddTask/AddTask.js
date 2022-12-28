@@ -42,7 +42,7 @@ const AddTask = () => {
                               </div>
 
                               <div className="flex justify-end mt-6">
-                                   <button className="px-8 py-2.5 leading-5 text-gray-700 transition-colors duration-300 transform bg-gradient-to-r from-[#EF629F] to-[#EECDA3] rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Add</button>
+                                   <button className="px-8 py-2.5 leading-5 text-slate-300 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Add</button>
                               </div>
                          </form>
                     </section>
