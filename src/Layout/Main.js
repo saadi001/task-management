@@ -38,7 +38,9 @@ const Main = () => {
                                    <div className='text-center pt-4 relative'>
                                         <div className='border w-14 h-14 inline-block rounded-full'><img src="" alt="user" /></div>
                                         <p className='mt-3 mb-5 text-sm'>{user?.email}</p>
-                                        <div title='sign out' onClick={userLogOut} className='absolute right-1 top-1  p-1 rounded-full hover:bg-slate-300 cursor-pointer'><img className='w-5' src={logOutIcon} alt="" /></div>
+                                        {
+                                             user && <div title='sign out' onClick={userLogOut} className='absolute right-1 top-1  p-1 rounded-full hover:bg-slate-300 cursor-pointer'><img className='w-5' src={logOutIcon} alt="" /></div>
+                                        }
                                    </div>
                                    <li className='font-semibold'><Link to='/addTask'><img className='w-8' src={addTaskIcon} alt="" /> Add Task</Link></li>
                                    <li className='font-semibold'><Link to={'/myTask'}><img className='w-8' src={taskPlanning} alt="" />My Task</Link></li>
