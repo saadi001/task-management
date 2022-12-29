@@ -15,6 +15,19 @@ const MyTask = () => {
           }
      })
 
+     const handleUpdateTask = (id) =>{
+          fetch(`http://localhost:5000/myTask/${id}`,{
+               method: 'PUT'
+          })
+          .then(res => res.json())
+          .then(data=>{
+               if(data.modifiedCount>0){
+                    refetch()
+                    toast.success('task move completed successfully')
+               }
+          })
+     }
+
      const handleDelete = (id) =>{
           fetch(`http://localhost:5000/myTask/${id}`,{
                method: 'DELETE',
@@ -53,7 +66,7 @@ const MyTask = () => {
                          <div className='grid grid-cols-2 gap-3 pr-2'>
                               <button className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">update</button>
                               <button onClick={()=>handleDelete(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">delete</button>
-                              <button className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">complete</button>
+                              <button onClick={()=>handleUpdateTask(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">complete</button>
                               
 
 
