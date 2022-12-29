@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import addTask from '../../Asset/icon/addTask.svg'
+import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const AddTask = () => {
      const { register, formState: { errors }, handleSubmit } = useForm();
+     const {user} = useContext(AuthContext)
      const navigate = useNavigate();
 
      const handleAddTask = (data) => {
@@ -24,10 +26,11 @@ const AddTask = () => {
                     if (imageData.success) {
                          console.log(imageData.data.url)
                          const tasks = {
+                              email: user?.email,
                               taskName: taskname,
                               taskDetails: taskdetails,
                               image: imageData.data.url,
-                              status: 'running'
+                              status: 'running'                              
                          }
                          fetch('http://localhost:5000/tasks',{
                               method: 'POST',
