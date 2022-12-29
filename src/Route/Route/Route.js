@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
 import AddTask from "../../pages/AddTask/AddTask";
 import CompletedTask from "../../pages/completedTask/CompletedTask";
+import Loading from "../../pages/Loading/Loading";
 import Login from "../../pages/Login/Login";
 import MyTask from "../../pages/Mytask/MyTask";
 import NotFound from "../../pages/NotFound/NotFound";
@@ -42,6 +43,6 @@ export const router = createBrowserRouter([
      {
           path: '*',
           element: <NotFound></NotFound>
-     }
+     },
 
 ])

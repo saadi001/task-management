@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import Loading from '../Loading/Loading';
 
 const CompletedTask = () => {
      const {user} = useContext(AuthContext)
@@ -29,8 +30,8 @@ const CompletedTask = () => {
           })
      }
 
-     if(isLoading){
-          return <div>Loading...</div>
+     if (isLoading) {
+          return <div className='mt-14 flex justify-center items-center'><Loading></Loading></div>
      }
      return (
           <div>

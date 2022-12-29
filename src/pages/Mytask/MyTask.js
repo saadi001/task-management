@@ -2,15 +2,16 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import Loading from '../Loading/Loading';
 
-const MyTask = () => {
+const MyTask = () => {     
      const { user } = useContext(AuthContext)
      const { data: myTask, isLoading, refetch } = useQuery({
           queryKey: ['myTask', user?.email],
           queryFn: async () => {
                const res = await fetch(`http://localhost:5000/myTask?email=${user?.email}`)
                const data = await res.json()
-               console.log(data)
+               // console.log(data)
                return data;
           }
      })
@@ -44,7 +45,7 @@ const MyTask = () => {
      }
 
      if (isLoading) {
-          return <div>Loading...</div>
+          return <div className='mt-14 flex justify-center items-center'><Loading></Loading></div>
      }
 
      return (
