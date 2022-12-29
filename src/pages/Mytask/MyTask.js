@@ -51,7 +51,7 @@ const MyTask = () => {
           <div>
                <p className='text-2xl font-semibold capitalize text-gray-700'>My task</p>
                {
-                    myTask && myTask.map(task => <div key={task._id} className='mt-5 flex justify-between items-center border rounded'>
+                    myTask && myTask.map(task => <div key={task._id} className='mt-5 flex gap-3 justify-between items-center border rounded'>
                          <div className='flex gap-4'>
                               <div className="avatar">
                                    <div className="w-24 h-full rounded">
@@ -64,9 +64,9 @@ const MyTask = () => {
                               </div>
                          </div>
                          <div className='grid grid-cols-2 gap-3 pr-2'>
-                              <button className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">update</button>
-                              <button onClick={()=>handleDelete(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">delete</button>
-                              <button onClick={()=>handleUpdateTask(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">complete</button>
+                              <button className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Edit</button>
+                              <button onClick={()=>handleDelete(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Delete</button>
+                              <button onClick={()=>handleUpdateTask(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Complete</button>
                               
 
 

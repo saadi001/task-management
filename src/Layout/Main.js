@@ -6,6 +6,7 @@ import taskPlanning from '../Asset/icon/icons8-task-planning-48.png'
 import taskCompleted from '../Asset/icon/icons8-task-completed-48.png'
 import logOutIcon from '../Asset/icon/logout2.png';
 import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
+import menubar from '../Asset/icon/menubar.png'
 
 const Main = () => {
      const {logOut,user} = useContext(AuthContext)
@@ -27,8 +28,8 @@ const Main = () => {
                          <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                          <div className="drawer-content p-5 mt-3">
                               {/* <!-- Page content here --> */}
+                              <label htmlFor="my-drawer-2" className="float-right drawer-button lg:hidden cursor-pointer"><img className='w-8' src={menubar} alt="" /></label>
                               <Outlet></Outlet>
-                              <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                          </div>
                          <div className="drawer-side bg-slate-50 sidebar">

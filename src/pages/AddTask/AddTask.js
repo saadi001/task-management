@@ -49,7 +49,7 @@ const AddTask = () => {
      }
      return (
           <div>
-               <div className=' h-36 rounded-md flex justify-between items-center bg-gradient-to-tr from-[#EECDA3] to-[#EF629F]'>
+               <div className=' h-36 lg:mt-0 mt-8 rounded-md flex justify-between items-center bg-gradient-to-tr from-[#EECDA3] to-[#EF629F]'>
                     <div className=' pl-5 pr-2'>
                          <span className='text-base md:text-3xl font-semibold'>Saadi's Tasks</span> <br />
                          <span className='text-slate-600 text-sm lg:text-base'>Maintain your daily tasks easily</span>

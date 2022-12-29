@@ -34,7 +34,7 @@ const CompletedTask = () => {
      }
      return (
           <div>
-               <p className='text-2xl font-semibold capitalize text-gray-700'>My task</p>
+               <p className='text-2xl font-semibold capitalize text-gray-700'>Completed task</p>
                {
                     completedTask && completedTask.map(task => <div key={task._id} className='mt-5 flex justify-between items-center border rounded'>
                          <div className='flex gap-4'>
@@ -48,7 +48,7 @@ const CompletedTask = () => {
                                    <p className='text-sm'>{task?.taskDetails.length > 30 ? task?.taskDetails.slice(0, 20) + "..." : task?.taskDetails}</p>
                               </div>
                          </div>
-                         <div className='grid grid-cols-2 gap-3 pr-2'>
+                         <div className='grid grid-cols-1 gap-3 pr-2'>
                               <button className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Not complete</button>
                               <button onClick={()=>handleDelete(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">delete</button>                                                            
 
