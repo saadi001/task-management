@@ -9,14 +9,14 @@ const CompletedTask = () => {
      const {data:completedTask, isLoading, refetch} = useQuery({
           queryKey:['completedTask'],
           queryFn: async()=>{
-               const res = await fetch(`http://localhost:5000/completedTask?email=${user?.email}`)
+               const res = await fetch(`https://task-management-backend.vercel.app/completedTask?email=${user?.email}`)
                const data = res.json()
                return data;
           }
      })
 
      const handleDelete = (id) =>{
-          fetch(`http://localhost:5000/myTask/${id}`,{
+          fetch(`https://task-management-backend.vercel.app/myTask/${id}`,{
                method: 'DELETE',
 
           })
@@ -26,6 +26,19 @@ const CompletedTask = () => {
                if(data.deletedCount>0){
                     refetch()
                     toast.success('task deleted successfully')
+               }
+          })
+     }
+
+     const handleNotCompleteTask = (id)=>{
+          fetch(`https://task-management-backend.vercel.app/NotCompleteTask/${id}`,{
+               method: 'PUT'
+          })
+          .then(res => res.json())
+          .then(data =>{
+               if(data.modifiedCount>0){
+                    refetch()
+                    toast.success('move to My task successfully')
                }
           })
      }
@@ -50,7 +63,7 @@ const CompletedTask = () => {
                               </div>
                          </div>
                          <div className='grid grid-cols-1 gap-3 pr-2'>
-                              <button className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Not complete</button>
+                              <button onClick={()=>handleNotCompleteTask(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Not complete</button>
                               <button onClick={()=>handleDelete(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">delete</button>                                                            
 
 

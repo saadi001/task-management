@@ -5,19 +5,19 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import Loading from '../Loading/Loading';
 
 const MyTask = () => {     
-     const { user } = useContext(AuthContext)
+     const { user } = useContext(AuthContext);     
      const { data: myTask, isLoading, refetch } = useQuery({
           queryKey: ['myTask', user?.email],
           queryFn: async () => {
-               const res = await fetch(`http://localhost:5000/myTask?email=${user?.email}`)
+               const res = await fetch(`https://task-management-backend.vercel.app/myTask?email=${user?.email}`)
                const data = await res.json()
                // console.log(data)
                return data;
           }
      })
 
-     const handleUpdateTask = (id) =>{
-          fetch(`http://localhost:5000/myTask/${id}`,{
+     const handleCompleteTask = (id) =>{
+          fetch(`https://task-management-backend.vercel.app/myTask/${id}`,{
                method: 'PUT'
           })
           .then(res => res.json())
@@ -30,7 +30,7 @@ const MyTask = () => {
      }
 
      const handleDelete = (id) =>{
-          fetch(`http://localhost:5000/myTask/${id}`,{
+          fetch(`https://task-management-backend.vercel.app/myTask/${id}`,{
                method: 'DELETE',
 
           })
@@ -67,7 +67,7 @@ const MyTask = () => {
                          <div className='grid grid-cols-2 gap-3 pr-2'>
                               <button className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Edit</button>
                               <button onClick={()=>handleDelete(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Delete</button>
-                              <button onClick={()=>handleUpdateTask(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Complete</button>
+                              <button onClick={()=>handleCompleteTask(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Complete</button>
                               
 
 
