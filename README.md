@@ -17,5 +17,6 @@
 ### Technolgoy Used:
 
 <h4>Frontend:</h4> React, React router dom, tailwind, MerakiUI, DaisyUI, Vanilla CSS
+<h4>Npm packages:</h4> react hook form, react hot toast
 <h4>Backend:</h4> Express, MongoDB, Node js
 <h4>Authentication:</h4> Firebase
