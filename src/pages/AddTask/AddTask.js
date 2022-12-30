@@ -10,12 +10,12 @@ const AddTask = () => {
      const [loading, setLoading] = useState(false);
      const [imageName, setImageName] = useState('Choose file...')
      const { register, formState: { errors }, handleSubmit } = useForm();
-     const { user } = useContext(AuthContext)
+     const { user } = useContext(AuthContext);
      const navigate = useNavigate();
 
-     const handleImageName = (data) => {
-          console.log(data)
-     }
+     // const handleImageName = (data) => {
+     //      console.log(data)
+     // }
 
      const handleAddTask = (data) => {
           setLoading(true)
@@ -90,7 +90,7 @@ const AddTask = () => {
                                                        <div className='border relative  mt-2 rounded-md flex justify-between items-center'>
                                                             <span className='pl-3 text-gray-700 overflow-hidden text-ellipsis'>{imageName}</span>
                                                             <span className='sidebar inline-block py-2 px-3 text-gray-700 cursor-pointer'>Browse</span>
-                                                            <input {...register('image')} name='photo' type="file" className="opacity-0 absolute top-0 left-0 w-full px-4 py-2 text-gray-700 sidebar border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-rose-400 focus:ring-gray-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
+                                                            <input {...register('image')} type="file" className="opacity-0 absolute top-0 left-0 w-full px-4 py-2 text-gray-700 sidebar border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-rose-400 focus:ring-gray-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
                                                        </div>
                                                   </div>
 

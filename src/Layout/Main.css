@@ -11,6 +11,10 @@
      backdrop-filter: blur(2px);
 }
 .sidebar{
-     background: rgba(255, 255, 255, 0.2);
+     background: rgba(255, 255, 255, 0.4);
      
+}
+
+.back{
+     background-color: rgba(245, 245, 220, 0.64);
 }
