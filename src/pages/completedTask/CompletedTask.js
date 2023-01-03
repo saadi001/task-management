@@ -7,7 +7,7 @@ import Loading from '../Loading/Loading';
 const CompletedTask = () => {
      const {user} = useContext(AuthContext)
      const {data:completedTask, isLoading, refetch} = useQuery({
-          queryKey:['completedTask'],
+          queryKey:['completedTask',user?.email],
           queryFn: async()=>{
                const res = await fetch(`https://task-management-backend.vercel.app/completedTask?email=${user?.email}`)
                const data = res.json()
@@ -50,7 +50,7 @@ const CompletedTask = () => {
           <div>
                <p className='text-2xl font-semibold capitalize text-gray-700'>Completed task</p>
                {
-                    completedTask && completedTask.map(task => <div key={task._id} className='mt-5 flex justify-between items-center border rounded'>
+                    completedTask.length > 0 ? completedTask.map(task => <div key={task._id} className='mt-5 flex justify-between items-center border rounded back shadow-md'>
                          <div className='flex gap-4'>
                               <div className="avatar">
                                    <div className="w-24 h-full rounded">
@@ -68,7 +68,9 @@ const CompletedTask = () => {
 
 
                          </div>
-                    </div>)
+                    </div> 
+                    ): 
+                    <div className='text-center text-sm'>No task found</div>
                }
           </div>
      );

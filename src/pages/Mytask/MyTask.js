@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import Loading from '../Loading/Loading';
+import '../../Layout/Main.css'
 
 const MyTask = () => {     
      const { user } = useContext(AuthContext);     
@@ -52,7 +53,7 @@ const MyTask = () => {
           <div>
                <p className='text-2xl font-semibold capitalize text-gray-700'>My task</p>
                {
-                    myTask && myTask.map(task => <div key={task._id} className='mt-5 flex gap-3 justify-between items-center border rounded'>
+                    myTask.length > 0 ? myTask.map(task => <div key={task._id} className='mt-8 flex gap-3 justify-between items-center border rounded back shadow-md'>
                          <div className='flex gap-4'>
                               <div className="avatar">
                                    <div className="w-24 h-full rounded">
@@ -72,7 +73,8 @@ const MyTask = () => {
 
 
                          </div>
-                    </div>)
+                    </div>) :
+                    <div className='text-center text-sm'>No task found</div>
                }
           </div>
      );
