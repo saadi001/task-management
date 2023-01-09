@@ -53,7 +53,7 @@ const MyTask = () => {
           <div>
                <p className='text-2xl font-semibold capitalize text-gray-700'>My task</p>
                {
-                    myTask.length > 0 ? myTask.map(task => <div key={task._id} className='mt-8 flex gap-3 justify-between items-center border rounded back shadow-md'>
+                    myTask.length > 0 ? myTask.map(task => <div key={task._id} className='mt-6 flex gap-3 justify-between items-center border rounded back shadow-md'>
                          <div className='flex gap-4'>
                               <div className="avatar">
                                    <div className="w-24 h-full rounded">

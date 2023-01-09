@@ -11,12 +11,22 @@
      backdrop-filter: blur(2px);
 }
 .sidebar{
-     background: rgba(255, 255, 255, 0.4);
+     background: rgba(255, 255, 255, 0.2);
      
 }
 
 .back{
      background-color: rgba(255,255,255,0.2);
-     backdrop-filter: blur(1px);
+     /* backdrop-filter: blur(1px); */
      
 }
+
+.gradientCss{
+     background: linear-gradient(to right, red, blue);
+}
+
+@media only screen and (max-width: 600px) {
+     .sidebar{
+          background: rgba(255, 255, 255);
+     }
+   }
