@@ -13,10 +13,6 @@ const AddTask = () => {
      const { user } = useContext(AuthContext);
      const navigate = useNavigate();
 
-     // const handleImageName = (data) => {
-     //      console.log(data)
-     // }
-
      const handleAddTask = (data) => {
           setLoading(true)
           console.log(data)
