@@ -4,6 +4,8 @@ import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import Loading from '../Loading/Loading';
 import '../../Layout/Main.css'
+import details from '../../Asset/icon/icons8-more-details-24.png'
+import { Link } from 'react-router-dom';
 
 const MyTask = () => {     
      const { user } = useContext(AuthContext);     
@@ -62,7 +64,7 @@ const MyTask = () => {
                               </div>
                               <div>
                                    <p className='capitalize text-xl font-semibold text-slate-700'>{task?.taskName}</p>
-                                   <p className='text-sm'>{task?.taskDetails.length > 30 ? task?.taskDetails.slice(0, 20) + "..." : task?.taskDetails}</p>
+                                   <div className='text-sm flex items-center flex-wrap'>{task?.taskDetails.length > 20 ? task?.taskDetails.slice(0, 20) + "..." : task?.taskDetails} <Link to={`/details/${task._id}`} title='details' className=''><img  className='w-4 ml-1 cursor-pointer' src={details} alt="" /></Link></div>
                               </div>
                          </div>
                          <div className='grid grid-cols-2 gap-3 pr-2'>
