@@ -14,38 +14,63 @@ const UpadateTask = () => {
      const handleUpdate = (data) => {
           const { taskname, taskdetails } = data;
           console.log(data.image.length)
-          /* const image = data.image[0]
-          const formData = new FormData();
-          formData.append('image', image)
-          const url = `https://api.imgbb.com/1/upload?key=63767107697823bd4d26d5b8bb78e4a0`
-          fetch(url, {
-               method: 'POST',
-               body: formData
-          })
-          .then(res=>res.json())
-          .then(imageData =>{
-               if(imageData.success){
-                    // console.log(imageData.data.url)
-                    setImageUrl(imageData.data.url)
-                    const updatedDetails = {
-                         taskName: taskname,
-                         taskDetails: taskdetails,
-                         image: imageUrl
-                    }
-                    fetch(`https://task-management-backend.vercel.app/updateDetails/${_id}`,{
-                         method: 'PUT', 
-                         headers: {
-                              'content-type':'application/json'
-                         },
-                         body: JSON.stringify(updatedDetails)
-                    })
-                    .then(res=> res.json())
+          if (data.image.length < 1) {
+               const updatedDetails = {
+                    taskName: taskname,
+                    taskDetails: taskdetails,
+                    image: imageUrl
+               }
+               fetch(`https://task-management-backend.vercel.app/updateDetails/${_id}`, {
+                    method: 'PUT',
+                    headers: {
+                         'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedDetails)
+               })
+                    .then(res => res.json())
                     .then(data => {
                          console.log(data)
+                         data.modifiedCount>0 ? toast.success('Task updated successfully'): toast("You haven't change anything")
 
                     })
-               }
-          }) */
+
+          }
+          else if(data.image.length > 0) {
+               const image = data.image[0]
+               const formData = new FormData();
+               formData.append('image', image)
+               const url = `https://api.imgbb.com/1/upload?key=63767107697823bd4d26d5b8bb78e4a0`
+               fetch(url, {
+                    method: 'POST',
+                    body: formData
+               })
+                    .then(res => res.json())
+                    .then(imageData => {
+                         if (imageData.success) {
+                              console.log(imageUrl)
+                              console.log(imageData.data.url)
+                              // setImageUrl(imageData.data.url)
+                              console.log(imageUrl)
+                              const updatedDetails = {
+                                   taskName: taskname,
+                                   taskDetails: taskdetails,
+                                   image: imageData.data.url
+                              }
+                              fetch(`https://task-management-backend.vercel.app/updateDetails/${_id}`, {
+                                   method: 'PUT',
+                                   headers: {
+                                        'content-type': 'application/json'
+                                   },
+                                   body: JSON.stringify(updatedDetails)
+                              })
+                                   .then(res => res.json())
+                                   .then(data => {
+                                        console.log(data)
+
+                                   })
+                         }
+                    })
+          }          
      }
      return (
           <div>
