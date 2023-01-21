@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const MyTask = () => {     
      const { user } = useContext(AuthContext);     
-     const { data: myTask, isLoading, refetch } = useQuery({
+     const { data: myTask=[], isLoading, refetch } = useQuery({
           queryKey: ['myTask', user?.email],
           queryFn: async () => {
                const res = await fetch(`https://task-management-backend.vercel.app/myTask?email=${user?.email}`)
@@ -26,7 +26,7 @@ const MyTask = () => {
           .then(res => res.json())
           .then(data=>{
                if(data.modifiedCount>0){
-                    refetch()
+                    refetch();
                     toast.success('task move completed successfully')
                }
           })
@@ -64,7 +64,7 @@ const MyTask = () => {
                               </div>
                               <div>
                                    <p className='capitalize text-xl font-semibold text-slate-700'>{task?.taskName}</p>
-                                   <div className='text-sm flex items-center flex-wrap'>{task?.taskDetails.length > 20 ? task?.taskDetails.slice(0, 20) + "..." : task?.taskDetails} <Link to={`/details/${task._id}`} title='details' className=''><img  className='w-4 ml-1 cursor-pointer' src={details} alt="" /></Link></div>
+                                   <div className='text-sm flex items-center flex-wrap'>{task?.taskDetails.length > 20 ? task?.taskDetails.slice(0, 20) + "..." : task?.taskDetails} <Link to={`/details/${task._id}`} title='details' className=''><img  className='w-4 ml-0 sm:ml-1 cursor-pointer' src={details} alt="" /></Link></div>
                               </div>
                          </div>
                          <div className='grid grid-cols-2 gap-3 pr-2'>
