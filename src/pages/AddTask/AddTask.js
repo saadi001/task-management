@@ -17,40 +17,100 @@ const AddTask = () => {
           setLoading(true)
           console.log(data)
           const { taskname, taskdetails } = data;
-          const image = data.image[0]
-          const formData = new FormData();
-          formData.append('image', image)
-          const url = `https://api.imgbb.com/1/upload?key=63767107697823bd4d26d5b8bb78e4a0`
-          fetch(url, {
-               method: 'POST',
-               body: formData
-          })
-               .then(res => res.json())
-               .then(imageData => {
-                    if (imageData.success) {
-                         console.log(imageData.data.url)
-                         const tasks = {
-                              email: user?.email,
-                              taskName: taskname,
-                              taskDetails: taskdetails,
-                              image: imageData.data.url,
-                              status: 'running'
-                         }
-                         fetch('https://task-management-backend.vercel.app/tasks', {
-                              method: 'POST',
-                              headers: {
-                                   'content-type': 'application/json'
-                              },
-                              body: JSON.stringify(tasks)
-                         })
-                         .then(res => res.json())
-                         .then(result => {
-                              toast.success('task added successfully')
-                              setLoading(false)
-                              navigate('/mytask')
-                         })
-                    }
+          console.log(data.image.length)
+          if (data.image.length < 1) {
+               const tasks = {
+                    email: user?.email,
+                    taskName: taskname,
+                    taskDetails: taskdetails,
+                    image: '',
+                    status: 'running'
+               }
+               fetch('https://task-management-backend.vercel.app/tasks', {
+                    method: 'POST',
+                    headers: {
+                         'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(tasks)
                })
+                    .then(res => res.json())
+                    .then(result => {
+                         toast.success('task added successfully')
+                         setLoading(false)
+                         navigate('/mytask')
+                    })
+          }
+          else if (data.image.length > 1) {               
+               const image = data.image[0]
+               const formData = new FormData();
+               formData.append('image', image)
+               const url = `https://api.imgbb.com/1/upload?key=63767107697823bd4d26d5b8bb78e4a0`
+               fetch(url, {
+                    method: 'POST',
+                    body: formData
+               })
+                    .then(res => res.json())
+                    .then(imageData => {
+                         if (imageData.success) {
+                              console.log(imageData.data.url)
+                              const tasks = {
+                                   email: user?.email,
+                                   taskName: taskname,
+                                   taskDetails: taskdetails,
+                                   image: imageData.data.url,
+                                   status: 'running'
+                              }
+                              fetch('https://task-management-backend.vercel.app/tasks', {
+                                   method: 'POST',
+                                   headers: {
+                                        'content-type': 'application/json'
+                                   },
+                                   body: JSON.stringify(tasks)
+                              })
+                                   .then(res => res.json())
+                                   .then(result => {
+                                        toast.success('task added successfully')
+                                        setLoading(false)
+                                        navigate('/mytask')
+                                   })
+                         }
+                    })
+          }
+          // const { taskname, taskdetails } = data;
+          // const image = data.image[0]
+          // const formData = new FormData();
+          // formData.append('image', image)
+          // const url = `https://api.imgbb.com/1/upload?key=63767107697823bd4d26d5b8bb78e4a0`
+          // fetch(url, {
+          //      method: 'POST',
+          //      body: formData
+          // })
+          //      .then(res => res.json())
+          //      .then(imageData => {
+          //           if (imageData.success) {
+          //                console.log(imageData.data.url)
+          //                const tasks = {
+          //                     email: user?.email,
+          //                     taskName: taskname,
+          //                     taskDetails: taskdetails,
+          //                     image: imageData.data.url,
+          //                     status: 'running'
+          //                }
+          //                fetch('https://task-management-backend.vercel.app/tasks', {
+          //                     method: 'POST',
+          //                     headers: {
+          //                          'content-type': 'application/json'
+          //                     },
+          //                     body: JSON.stringify(tasks)
+          //                })
+          //                .then(res => res.json())
+          //                .then(result => {
+          //                     toast.success('task added successfully')
+          //                     setLoading(false)
+          //                     navigate('/mytask')
+          //                })
+          //           }
+          //      })
      }
      return (
           <div>

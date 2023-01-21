@@ -5,10 +5,11 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import Loading from '../Loading/Loading';
 import '../../Layout/Main.css'
 import details from '../../Asset/icon/icons8-more-details-24.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MyTask = () => {     
      const { user } = useContext(AuthContext);     
+     const navigate = useNavigate();
      const { data: myTask=[], isLoading, refetch } = useQuery({
           queryKey: ['myTask', user?.email],
           queryFn: async () => {
@@ -47,6 +48,11 @@ const MyTask = () => {
           })
      }
 
+     const handleNavigateEdit = (id) =>{
+          navigate(`/update/${id}`)
+          console.log(id)
+     }
+
      if (isLoading) {
           return <div className='mt-14 flex justify-center items-center'><Loading></Loading></div>
      }
@@ -68,7 +74,7 @@ const MyTask = () => {
                               </div>
                          </div>
                          <div className='grid grid-cols-2 gap-3 pr-2'>
-                              <button className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600"><Link to={`/update/${task._id}`}>Edit</Link></button>
+                              <button onClick={()=>handleNavigateEdit(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Edit</button>
                               <button onClick={()=>handleDelete(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Delete</button>
                               <button onClick={()=>handleCompleteTask(task._id)} className="px-4 py-2 text-xs text-slate-200 transition-colors duration-300 transform bg-gradient-to-r from-[#cc2b5e] to-[#753a88] rounded-md  focus:outline-none focus:bg-gray-600">Complete</button>
                               
