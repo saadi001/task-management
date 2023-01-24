@@ -26,14 +26,14 @@ const Main = () => {
      return (
           <div className='main ' >
                <div className='flex justify-center items-center py-10 w-full h-full dark:bg-slate-700/40'>
-                    <div className='max-w-4xl w-full h-full mx-3 lg:mx-0 rounded-md inner-card overflow-y-auto'>
+                    <div className='max-w-4xl max-h-[600px] w-full h-full mx-3 lg:mx-0 rounded-md inner-card overflow-y-auto'>
                          <div className="drawer drawer-mobile ">
                               <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                               <div className="drawer-content p-5 mt-3">
                                    {/* <!-- Page content here --> */}
                                    <div className=' flex justify-end gap-4 items-center'>
                                         <label className='float-right cursor-pointer'><Switcher></Switcher></label>
-                                        <label htmlFor="my-drawer-2" className="float-right drawer-button lg:hidden cursor-pointer"><img className='w-8' src={menubar} alt="" /></label>
+                                        <label htmlFor="my-drawer-2" className="float-right drawer-button lg:hidden cursor-pointer"><img className='md:w-8 w-5' src={menubar} alt="" /></label>
                                    </div>
                                    <Outlet></Outlet>
                               </div>
@@ -45,7 +45,7 @@ const Main = () => {
                                              <div className='border-2 border-rose-500 w-14 h-14 inline-block rounded-full'><img className='w-full rounded-full' src={user?.photoURL} alt="user" /></div>
                                              <p className='mt-3 mb-5 text-sm'>{user?.displayName}</p>
                                              {
-                                                  user && <div title='sign out' onClick={userLogOut} className='absolute right-1 top-1  p-1 rounded-full hover:bg-gray-300 cursor-pointer'><img className='w-5' src={logOutIcon} alt="" /></div>
+                                                  user && <div title='sign out' onClick={userLogOut} className='absolute right-1 top-1  p-1 rounded-full hover:bg-gray-300/30 cursor-pointer'><img className='w-5' src={logOutIcon} alt="" /></div>
                                              }
                                         </div>
                                         <li className='font-semibold'><Link to='/addTask'><img className='w-8' src={addTaskIcon} alt="" /> Add Task</Link></li>
