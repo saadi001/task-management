@@ -25,8 +25,8 @@ const Main = () => {
      }
      return (
           <div className='main ' >
-               <div className='flex justify-center items-center py-10 w-full h-full dark:bg-slate-700/40'>
-                    <div className='max-w-4xl max-h-[600px] w-full h-full mx-3 lg:mx-0 rounded-md inner-card overflow-y-auto'>
+               <div className='flex justify-center py-8 items-center w-full h-full dark:bg-slate-700/40'>
+                    <div className='max-w-4xl max-h-[620px]  w-full h-full mx-3 lg:mx-0 rounded-md inner-card overflow-y-auto'>
                          <div className="drawer drawer-mobile ">
                               <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                               <div className="drawer-content p-5 mt-3">
